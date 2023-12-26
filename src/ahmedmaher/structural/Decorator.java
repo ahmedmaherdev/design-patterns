@@ -3,31 +3,31 @@ package ahmedmaher.structural;
 public class Decorator {
 
     public static void main(String[] args) {
-        Beverage beverage1 = new Expresso();
-        beverage1 = new Milk(beverage1);
-        beverage1 = new Whip(beverage1);
+        IBeverage IBeverage1 = new Expresso();
+        IBeverage1 = new Milk(IBeverage1);
+        IBeverage1 = new Whip(IBeverage1);
 
-        System.out.println("Order: " + beverage1.getDescription());
-        System.out.println("Cost: $" + beverage1.getCost());
+        System.out.println("Order: " + IBeverage1.getDescription());
+        System.out.println("Cost: $" + IBeverage1.getCost());
 
-        Beverage beverage2 = new Decaf();
-        beverage2 = new Milk(beverage2);
+        IBeverage IBeverage2 = new Decaf();
+        IBeverage2 = new Milk(IBeverage2);
 
-        System.out.println("\nOrder: " + beverage2.getDescription());
-        System.out.println("Cost: $" + beverage2.getCost());
+        System.out.println("\nOrder: " + IBeverage2.getDescription());
+        System.out.println("Cost: $" + IBeverage2.getCost());
 
     }
 }
 
 // Component
-interface Beverage {
+interface IBeverage {
     String getDescription();
     double getCost();
 }
 
 
 // Concrete Components
-class Expresso implements Beverage {
+class Expresso implements IBeverage {
     private final String description = "Expresso";
     private final double cost = 2.00;
 
@@ -43,7 +43,7 @@ class Expresso implements Beverage {
     }
 }
 
-class Decaf implements Beverage {
+class Decaf implements IBeverage {
     private final String description = "Decaf";
     private final double cost = 3.00;
 
@@ -59,11 +59,11 @@ class Decaf implements Beverage {
 }
 
 // Decorator
-abstract class CondimentDecorator implements Beverage {
-    protected Beverage beverage;
+abstract class CondimentDecorator implements IBeverage {
+    protected IBeverage IBeverage;
 
-    public CondimentDecorator(Beverage beverage) {
-        this.beverage = beverage;
+    public CondimentDecorator(IBeverage IBeverage) {
+        this.IBeverage = IBeverage;
     }
 }
 
@@ -72,17 +72,17 @@ abstract class CondimentDecorator implements Beverage {
 class Milk extends CondimentDecorator {
     private final String description = "Milk";
     private final double cost = 1.5;
-    public Milk(Beverage beverage) {
-        super(beverage);
+    public Milk(IBeverage IBeverage) {
+        super(IBeverage);
     }
     @Override
     public String getDescription() {
-        return this.beverage.getDescription() + " , " + description;
+        return this.IBeverage.getDescription() + " , " + description;
     }
 
     @Override
     public double getCost() {
-        return this.beverage.getCost() + cost;
+        return this.IBeverage.getCost() + cost;
     }
 }
 
@@ -90,17 +90,17 @@ class Whip extends CondimentDecorator {
 
     private final String description = "Whip";
     private final double cost = 2.5;
-    public Whip(Beverage beverage) {
-        super(beverage);
+    public Whip(IBeverage IBeverage) {
+        super(IBeverage);
     }
     @Override
     public String getDescription() {
-        return this.beverage.getDescription() + " , " + description;
+        return this.IBeverage.getDescription() + " , " + description;
     }
 
     @Override
     public double getCost() {
-        return this.beverage.getCost() + cost;
+        return this.IBeverage.getCost() + cost;
     }
 }
 
