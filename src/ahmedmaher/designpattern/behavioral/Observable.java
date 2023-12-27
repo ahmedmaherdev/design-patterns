@@ -1,4 +1,4 @@
-package ahmedmaher.behavioral;
+package ahmedmaher.designpattern.behavioral;
 
 import java.util.ArrayList;
 

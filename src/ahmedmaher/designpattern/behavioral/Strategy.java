@@ -1,4 +1,4 @@
-package ahmedmaher.behavioral;
+package ahmedmaher.designpattern.behavioral;
 
 public class Strategy {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package ahmedmaher.creational;
+package ahmedmaher.designpattern.creational;
 
 public class AbstractFactory {
     public static void main(String[] args) {

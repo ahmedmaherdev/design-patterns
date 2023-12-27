@@ -1,4 +1,4 @@
-package ahmedmaher.structural;
+package ahmedmaher.designpattern.structural;
 
 public class Decorator {
 
