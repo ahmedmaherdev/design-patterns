@@ -3,28 +3,34 @@ package ahmedmaher.designpattern.creational;
 public class Singleton {
 
     public static void main(String[] args) {
-        NetworkCard networkCard1 = NetworkCard.create();
-        NetworkCard networkCard2 = NetworkCard.create();
-        NetworkCard networkCard3 = NetworkCard.create();
+        Logger logger1 = Logger.getInstance();
+        Logger logger2 = Logger.getInstance();
 
-        networkCard1.display();
-        networkCard2.display();
-        networkCard3.display();
+        logger1.logMessage("First message logged.");
+        logger2.logMessage("Second message logged.");
+        
+        if (logger1 == logger2) {
+            System.out.println("Both logger instances are the same (Singleton).");
+        } else {
+            System.out.println("Both logger instances are different.");
+        }
     }
 }
 
+// Singleton Class
+class Logger {
+    private static Logger logger;
 
-class NetworkCard {
-    private static NetworkCard networkCard;
-    private NetworkCard() {
-        System.out.println("Instance Created...");
-    }
-    public static NetworkCard create() {
-        if(NetworkCard.networkCard == null)  NetworkCard.networkCard = new NetworkCard();
-        return NetworkCard.networkCard;
+    private Logger() {}
+
+    public static Logger getInstance() {
+        if(logger == null) {
+            logger = new Logger();
+        }
+        return logger;
     }
 
-    public void display() {
-        System.out.println("Hello!");
+    public void logMessage(String msg) {
+        System.out.println(msg);
     }
 }
