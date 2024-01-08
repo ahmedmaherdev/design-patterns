@@ -8,7 +8,7 @@ public class Singleton {
 
         logger1.logMessage("First message logged.");
         logger2.logMessage("Second message logged.");
-        
+
         if (logger1 == logger2) {
             System.out.println("Both logger instances are the same (Singleton).");
         } else {
